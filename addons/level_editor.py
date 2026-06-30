@@ -58,6 +58,9 @@ class TOPBAR_MT_my_menu(bpy.types.Menu):
     # サブメニューの描画
     def  draw(self, context):
         
+        self.layout.operator("wm.url_open_preset", 
+                             text="Manual", icon="HELP")
+        self.layout.separator()
         #トップバーの「エディターメニュー」に項目（オペレータ）を追加
         self.layout.operator("wm.url_open_preset", 
                              text="Manual", icon="HELP")
