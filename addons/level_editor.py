@@ -65,6 +65,9 @@ class TOPBAR_MT_my_menu(bpy.types.Menu):
         self.layout.operator(MYADDON_OT_create_ico_sphere.bl_idname, 
                              text=MYADDON_OT_create_ico_sphere.bl_label)
         self.layout.separator()
+        self.layout.operator(MYADDON_OT_create_plane.bl_idname, 
+                             text=MYADDON_OT_create_plane.bl_label)
+        self.layout.separator()
         self.layout.operator("wm.url_open_preset", 
                              text="Manual", icon="HELP")
         
@@ -103,9 +106,23 @@ class MYADDON_OT_create_ico_sphere(bpy.types.Operator):
 
         return {'FINISHED'}
 
+class MYADDON_OT_create_plane(bpy.types.Operator):
+    bl_idname = "myaddon.myaddon_ot_create_object"
+    bl_label = "平面生成"
+    bl_description = "平面を生成します"
+    bl_options = {'REGISTER', 'UNDO'}
+
+    # メニューを実行したときに呼ばれる関数
+    def execute(self, context):
+        bpy.ops.mesh.primitive_plane_add()
+        print("平面を生成しました")
+
+        return {'FINISHED'}
+
 # Blenderに登録するクラスリスト
 classes = (
     MYADDON_OT_strecth_vertex,
+    MYADDON_OT_create_plane,
     MYADDON_OT_create_ico_sphere,
     TOPBAR_MT_my_menu,
 )
