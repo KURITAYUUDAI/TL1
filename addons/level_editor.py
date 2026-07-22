@@ -67,6 +67,7 @@ class TOPBAR_MT_my_menu(bpy.types.Menu):
         self.layout.separator()
         self.layout.operator("wm.url_open_preset", 
                              text="Manual", icon="HELP")
+        self.layout.separator()
         
     # 既存のメニューにサブメニューを追加
     def submenu(self, context):
